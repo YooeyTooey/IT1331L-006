@@ -28,7 +28,7 @@
         let tableHTML = '<table>';
         
         // Create the table header row
-        tableHTML += '<tr><th>Animal ID</th><th>Animal Name</th><th>Owner Name</th><th>Weight</th><th>Age</th></tr>';
+        tableHTML += '<tr><th>Animal ID</th><th>Animal Name</th><th>Owner Name</th><th>Weight</th><th>Age</th><th>Age Bracket</th></tr>';
  
         // Define an array of animal objects
         const animals = [
@@ -53,9 +53,23 @@
         { id: 19, name: "Coco", owner: "Sophia", weight: 26, age: 22.1 }
         ];
 
+        // Function to determine age bracket based on age
+        function getAgeBracket(age) {
+            if (age <= 0.9) {
+                return "Puppy";
+            } else if (age <= 10) {
+                return "Adult";
+            } else if (age <= 15) {
+                return "Senior";
+            } else {
+                return "Geriatric";
+            }
+        }
+
         // Loop through each animal and create table rows with their data
         for (const animal of animals) {
-            tableHTML += `<tr><td>${animal.id}</td><td>${animal.name}</td><td>${animal.owner}</td><td>${animal.weight}</td><td>${animal.age}</td></tr>`;
+            const ageBracket = getAgeBracket(animal.age);
+            tableHTML += `<tr><td>${animal.id}</td><td>${animal.name}</td><td>${animal.owner}</td><td>${animal.weight}</td><td>${animal.age}</td><td>${ageBracket}</td></tr>`;
         }
 
         // Close the table HTML
